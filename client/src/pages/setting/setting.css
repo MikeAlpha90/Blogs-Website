@@ -1,0 +1,83 @@
+.setting{
+    display: flex;
+}
+.settingWrapper{
+    flex: 9;
+    padding: 20px;
+}
+.settingTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.settingUpdateTitle{
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: lightcoral;
+    font-weight: 600;
+}
+.settingDeleteTitle{
+    color: red;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.settingDeleteTitle:hover{
+    font-size: 12.3px;
+}
+.settingForm{
+    display: flex;
+    flex-direction: column;
+}
+.settingPP{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.settingPic{
+    width: 70px;
+    height: 70px;
+    border-radius: 30px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.settingIcon{
+    padding: 7px;
+    border-radius: 50%;
+    background-color: rgb(188, 188, 188);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+.settingIcon:hover{
+    padding: 7.12px;
+    font-size: 18.5px;
+}
+.settingForm > label{
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.settingForm > input{
+    color: gray;
+    margin: 10px 0;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid rgb(174, 174, 174);
+}
+.settingSubmit{
+    width: 150px;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: teal;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.settingSubmit:hover{
+    font-size: 13.8px;
+}
