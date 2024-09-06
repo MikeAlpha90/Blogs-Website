@@ -1,31 +1,26 @@
 import "./post.css";
-import postimg from "../../assets/images/post.jpg";
+// import postimg from "../../assets/images/post.jpg";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
     <div className="post">
-      <img className="postImg" src={postimg} alt="" />
+      {post.photo && <img className="postImg" src={post.photo} alt="" />}
       <div className="postInfo">
         <div className="postC">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((c) => (
+            <span className="postCat">{c.name}</span>
+          ))}
+          <Link to={`/post/${post._id}`} className="link">
+            <span className="postTitle">{post.title}</span>
+          </Link>
         </div>
-        <span className="postTitle">Lorem ipsum dolor sit amet</span>
         <hr />
-        <span className="postDate">2 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores id ad
-        minus consequatur sapiente nam reprehenderit accusamus perferendis
-        debitis excepturi. Lorem ipsum dolor sit, amet consectetur adipisicing
-        elit. Ad, quia. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Dolores id ad minus consequatur sapiente nam reprehenderit accusamus
-        perferendis debitis excepturi. Lorem ipsum dolor sit, amet consectetur
-        adipisicing elit. Ad, quia. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Dolores id ad minus consequatur sapiente nam
-        reprehenderit accusamus perferendis debitis excepturi. Lorem ipsum dolor
-        sit, amet consectetur adipisicing elit. Ad, quia.
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 };

@@ -1,13 +1,29 @@
 import "./singlePost.css";
 import img from "../../assets/images/singlePost.jpeg";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SinglePost = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img className="singlePostImg" src={img} alt="singlePostImg" />
+        {post.photo && (
+          <img className={post.photo} src={img} alt="singlePostImg" />
+        )}
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor sit amet.
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
             <i className="singlePostIcon fa-solid fa-trash"></i>
@@ -15,30 +31,12 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Alpha</b>
+            Author: <b>{post.username}</b>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
         </div>
         <p className="singlePostDesc">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis
-          quibusdam corporis ad voluptas iste molestias ratione eius quae vero
-          consequuntur. Iusto doloremque architecto, inventore nulla esse quos.
-          Odio corporis distinctio laudantium sed alias vitae cumque pariatur,
-          itaque doloremque quo autem vel hic earum adipisci numquam illo veniam
-          delectus dolores illum nobis ut? Repellendus minus assumenda, in
-          officiis dolore quidem explicabo placeat ex cum unde facere enim quod
-          dolorem cupiditate quo. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Natus iusto quidem aliquam suscipit porro voluptates
-          odit distinctio ipsum vero mollitia assumenda eveniet rerum doloremque
-          repudiandae cumque officia, doloribus facere quam. Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Quo autem dolores, consequatur,
-          expedita soluta odio exercitationem pariatur assumenda nam repellendus
-          modi, officiis fugiat tenetur rem recusandae consequuntur delectus
-          corrupti. Veniam aspernatur, velit eligendi dicta aperiam odit nulla,
-          perferendis minima ab vitae neque id maxime? Eaque, vero doloremque?
-          Nobis, necessitatibus officia. Quidem eum praesentium ratione eligendi
-          mollitia rerum nam culpa blanditiis, non quae soluta unde, recusandae
-          commodi veniam laboriosam cumque ea.
+          {post.desc}
         </p>
       </div>
     </div>

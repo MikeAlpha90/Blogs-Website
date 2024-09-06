@@ -10,7 +10,7 @@ import Contact from "./pages/contact/Contact?";
 import About from "./pages/about/About";
 
 function App() {
-  const user = false;
+  const user = true;
   return (
     <Router>
       <Topbar />
