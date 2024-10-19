@@ -58,11 +58,14 @@
 .topImage {
   font-size: 20px;
   border-radius: 50%;
-  background-color: rgb(198, 196, 196);
-  padding: 9px;
+  background-color: rgb(218, 218, 218);
+  padding: 2px;
   display: inline-block;
   cursor: pointer;
   transition: transform .3s ease;
+  height: 30px;
+  width: 30px;
+  object-fit: cover;  
 }
 .topImage:hover{
   transform: scale(1.2);

@@ -54,6 +54,10 @@
 .loginButton:hover{
     transform: scale(1.1);
 }
+.loginButton:disabled{
+    cursor: not-allowed;
+    background-color: rgb(246, 159, 128);
+}
 .loginRegister{
     position: absolute;
     top: 80px;

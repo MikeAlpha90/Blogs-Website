@@ -8,9 +8,11 @@ import Register from "./pages/register/Register";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./pages/contact/Contact?";
 import About from "./pages/about/About";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 function App() {
-  const user = true;
+  const {user} = useContext(Context)
   return (
     <Router>
       <Topbar />
